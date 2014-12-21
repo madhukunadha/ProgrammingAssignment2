@@ -44,10 +44,10 @@ cacheSolve <- function(x, ...)
   if(!is.null(inv))   # If inverse found
   {
     message("getting cached data.")   # it displays "getting cached data."
-    return(inv)   # Prints the matrix invers and skips the remaining function
+    return(inv)                       # Prints the matrix invers and skips the remaining function
   }
-  data <- x$get()   # since existing inverse not found, gets the matrix "x" in to "data"
-  inv <- solve(data)    # calculates the inverse and assins to "inv"
+  data <- x$get()                     # since existing inverse not found, gets the matrix "x" in to "data"
+  inv <- solve(data)                  # calculates the inverse and assins to "inv"
   x$setinverse(inv)						
-  inv   # Prints the inverse
+  inv                                 # Prints the inverse
 }
