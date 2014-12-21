@@ -13,17 +13,17 @@
 ##############################################################################
 
 
-makeCacheMatrix <- function(x = matrix())  	# Function to create the special matrix
+makeCacheMatrix <- function(x = matrix())  	      # Function to create the special matrix
 {
-  inv <- NULL                               # Assign null value to a variable called "inv"
-  set <- function(y)                        # The value of the matrix is set/calcualed
+  inv <- NULL                                     # Assign null value to a variable called "inv"
+  set <- function(y)                              # The value of the matrix is set/calcualed
   {
     x <<- y
     inv <<- NULL
   }
-  get <- function() x                       # The value of the matrix is assigned to "get"
+  get <- function() x                              # The value of the matrix is assigned to "get"
   setinverse <- function(inverse) inv <<- inverse  # Inverse of the matrix "x" is set/calculated here
-  getinverse <- function() inv              # Inverse of the matrix is then assigned to "getinverse"
+  getinverse <- function() inv                     # Inverse of the matrix is then assigned to "getinverse"
   list(set=set, get=get, 
        setinverse=setinverse, getinverse=getinverse)	 
 }
