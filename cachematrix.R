@@ -13,17 +13,17 @@
 ##############################################################################
 
 
-makeCacheMatrix <- function(x = matrix())  					# Function to create the special matrix
+makeCacheMatrix <- function(x = matrix())  	# Function to create the special matrix
 {
-  inv <- NULL																        # Assign null value to a variable called "inv"
-  set <- function(y) 														    # The value of the matrix is set/calcualed
+  inv <- NULL																# Assign null value to a variable called "inv"
+  set <- function(y) 												# The value of the matrix is set/calcualed
   {
     x <<- y
     inv <<- NULL
   }
-  get <- function() x														    # The value of the matrix is assigned to "get"
+  get <- function() x												# The value of the matrix is assigned to "get"
   setinverse <- function(inverse) inv <<- inverse		# Inverse of the matrix "x" is set/calculated here
-  getinverse <- function() inv											# Inverse of the matrix is then assigned to "getinverse"
+  getinverse <- function() inv							# Inverse of the matrix is then assigned to "getinverse"
   list(set=set, get=get, 
        setinverse=setinverse, getinverse=getinverse)	 
 }
@@ -40,14 +40,14 @@ makeCacheMatrix <- function(x = matrix())  					# Function to create the special
 
 cacheSolve <- function(x, ...) 
 {
-  inv <- x$getinverse()					      # Checks for inverse in the global environment and if found "inv" is assigned the inverse
-  if(!is.null(inv)) 						      # If inverse found
+  inv <- x$getinverse()					# Checks for inverse in the global environment and if found "inv" is assigned the inverse
+  if(!is.null(inv)) 						# If inverse found
   {
     message("getting cached data.")		# it displays "getting cached data."
-    return(inv)							          # Prints the matrix invers and skips the remaining function
+    return(inv)							    # Prints the matrix invers and skips the remaining function
   }
-  data <- x$get()							        # since existing inverse not found, gets the matrix "x" in to "data"
-  inv <- solve(data)						      # calculates the inverse and assins to "inv"
+  data <- x$get()							  # since existing inverse not found, gets the matrix "x" in to "data"
+  inv <- solve(data)						# calculates the inverse and assins to "inv"
   x$setinverse(inv)						
-  inv										              # Prints the inverse
+  inv										        # Prints the inverse
 }
